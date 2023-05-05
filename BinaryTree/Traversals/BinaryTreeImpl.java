@@ -1,4 +1,4 @@
-package BinaryTree;
+package BinaryTree.Traversals;
 class BinaryTreeImpl{
     public static void main(String [] args){
         Integer [] tree = {

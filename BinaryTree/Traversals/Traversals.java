@@ -1,5 +1,4 @@
-package BinaryTree;
-
+package BinaryTree.Traversals;
 
 public class Traversals {
     public static void main(String [] args){

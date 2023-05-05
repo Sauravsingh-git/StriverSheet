@@ -1,7 +1,8 @@
-package BinaryTree;
+package BinaryTree.Traversals;
 import java.util.*;
 public class PostorderTraversalIterative {
     // using one stack 
+
     public List<Integer> postorderTraversal(TreeNode root ){
         Stack<TreeNode> stack = new Stack<>();
         List<Integer> list = new ArrayList<>();
@@ -28,6 +29,14 @@ public class PostorderTraversalIterative {
         return list;
     }
     // using two stacks
+
+    // intution : The postorder traversal is leftchild rightchild root
+    // When using 2 stacks we are pushing elements in reversed postorder in stack2
+    // s1:[root] s2:[root]
+    // s1 : [left right] s2 : [root]
+    // s1 : [left] s2 : [root right]
+    // s1 : [] s2 : [root right left]
+    // list : [left right root]
     public List<Integer> postorderTraversal1(TreeNode root ){
         Stack<TreeNode> s1 = new Stack<>();
         Stack<TreeNode> s2 = new Stack<>();

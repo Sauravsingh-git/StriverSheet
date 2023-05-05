@@ -1,4 +1,4 @@
-package BinaryTree;
+package BinaryTree.Traversals;
 import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class AllTraversalIn1Itr {
                 if(temp.node.right != null )
                     st.push(new Pair(temp.node.right, 1));
             }else{
-                post.add(temp.node.val);
+                post.add(temp.node.val);    
             }
         }
     }
