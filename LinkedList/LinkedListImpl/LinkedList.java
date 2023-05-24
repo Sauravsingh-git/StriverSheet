@@ -1,4 +1,4 @@
-package LinkedList;
+package LinkedListImpl;
 // Implementation of LinkedList
 
 public class LinkedList{
