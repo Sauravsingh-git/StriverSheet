@@ -26,4 +26,5 @@ public class ConstructTreeFromPreAndIn {
         node.right = buildTreeUtil(preorder, inorder, pStart + leftSubtree + 1, pEnd, inorderIdx +1, iEnd, map);
         return node;
     }
+    // **** common mistake : forgetting to add +1 to the pStart in node.left call
 }
