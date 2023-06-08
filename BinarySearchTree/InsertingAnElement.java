@@ -1,3 +1,5 @@
+package BinarySearchTree;
+
 public class InsertingAnElement {
     // the iterative way
     public TreeNode insertIntoBST(TreeNode root, int val ){
