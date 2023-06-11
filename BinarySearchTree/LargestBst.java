@@ -28,6 +28,9 @@ public class LargestBst {
         if( left.maxEle < root.val && right.minEle > root.val ){
             // It is a bst
             return new NodeValues(Math.min(root.val, left.minEle), Math.max(right.maxEle, root.val), 1 + left.size + right.size);
+            // #################### forgetting to take min(root.val, left.maxEle) and max(root.val, right.minEle) #####################
+            // we cannot direclty take left.minEle because for the null minEle will be Integer.MAX_VALUE and condition will be true for every node
+            // and algorithm will return the total nodes of tree instead of maxBst
         }else{
             return new NodeValues(Integer.MIN_VALUE, Integer.MAX_VALUE, Math.max(left.size, right.size));
         }

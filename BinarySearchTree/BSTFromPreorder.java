@@ -43,7 +43,7 @@ public class BSTFromPreorder {
         TreeNode root = new TreeNode(preorder[pS]);
         int inorderIdx = inorderMap.get(root.val);
         int leftSubtree = inorderIdx - iS;
-        int rightSubtree = iE - inorderIdx;
+        //int rightSubtree = iE - inorderIdx;
         root.left = buildTreeUtil(preorder, pS+1, pS+leftSubtree, inorder, iS, inorderIdx-1, inorderMap);
         root.right = buildTreeUtil(preorder, pS+leftSubtree+1, pE, inorder, inorderIdx+1, iE, inorderMap);
         return root;
