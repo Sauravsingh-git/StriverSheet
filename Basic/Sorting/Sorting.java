@@ -1,6 +1,131 @@
 package Basic.Sorting;
-
+import java.util.*;
 class Sorting{
+    // bucket sorting
+    // used when data is uniformly spread across a range
+    // put the elements in a bucket
+    // then sort the buckets
+    // then append the buckets
+
+
+    // bucket sort
+    // create an array of size n of buckets
+    // enter the elements in the right bucket
+    // use collections.sort to sort the bucket
+    // add the sorted buckets to the array
+    public void bucketSort( float [] arr){
+        int len = arr.length;
+        ArrayList<Float> [] bucket = new ArrayList [len];
+        for ( int i = 0; i < len; i++ ){
+            bucket[i] = new ArrayList<Float>();
+        }
+
+        // put elements in different bucket
+        for ( int i = 0; i < len; i++ ){
+            float idx = arr[i] * len;
+            bucket[(int)idx].add(arr[i]);
+        }
+
+        for ( int i = 0; i < len; i++ ){
+            Collections.sort(bucket[i]);
+        }
+
+        int idx = 0;
+        for( int i = 0; i < len; i++ ){
+            for ( int j = 0; j < bucket[i].size(); j++ ){
+                arr[idx++] = bucket[i].get(j);
+            }
+        }
+    }
+    // Radix sort
+    // uses couting sort as a subroutine
+    // dont forget to reduce the value of bucket after using it
+
+    public void radixSort(int arr[], int n) 
+    { 
+        int max = arr[0];
+        for ( int ele : arr) 
+            max = Math.max(ele, max);
+            
+        for ( int exp = 1; max/exp > 0; exp *=10){
+            countingSort(arr, exp);
+        }
+    } 
+    
+    public void countingSort( int [] arr, int exp){
+        int len = arr.length;
+        
+        int [] map = new int [10];
+        // filling the map array
+        for ( int i = 0; i < len; i++ ){
+            map[(arr[i]/exp)%10]++;
+        }
+        // getting the actual positions
+        for(int i = 1; i < 10; i++ ){
+            map[i] += map[i-1];
+        }
+        
+        int [] outputArr = new int[len];
+        for ( int i = len-1; i >= 0; i-- ){
+            outputArr[map[(arr[i]/exp)%10]-1] = arr[i];
+            // to set it to the position of remaining elements in the bucket
+            map[(arr[i]/exp)%10]--;
+        }
+        
+        // copying the output arr to the orignal array
+        for ( int i = 0; i < len; i++ ){
+            arr[i] = outputArr[i];
+        }
+        
+    }
+    // couting sort
+    // create a map for all those elements available in the array
+    // get the actual positions in the map array
+    // use outputarr[map[arr[i]]-1] = arr[i]
+    // reduce the value in map to point it to the next pos
+    // copy the outputArr to the original array
+    public String countSort(String word)
+    {
+        char [] arr = word.toCharArray();
+        int len = arr.length;
+        int [] map = new int[26];
+        for ( char ch : arr )
+            map[ch-'a']++;
+             
+        
+        // getting the actual posititons of the characters
+        for ( int i = 1; i < 26; i++ ){
+            map[i] += map[i-1];
+        }
+        // populating the new array
+        char [] outputarr = new char [len];
+        
+        for ( int i = len-1; i >= 0; i--){
+            outputarr[map[arr[i]-'a']-1] = arr[i];
+            map[arr[i]-'a']--;
+        }
+        return new String(outputarr);
+    }
+    // shell sort
+    // 3 for loops will run
+    // for loop1 ( int gap = n/2; gap < n; gap /= 2)
+    // for loop2 ( int i = gap; i < n; i++ )
+    // for loop3 ( int j = i; j > 0 && arr[j] > arr[j-gap]; j -= gap)
+    //              swap(j, j-gap)
+
+    public void shellSort( int [] arr ) {
+        int len = arr.length;
+        for ( int gap = len/2;  gap > 0; gap /=2 ){
+            for ( int i = gap; i < len; i++ ){
+                int temp = arr[i];
+                int j;
+                for ( j = i; j >= gap && arr[j-gap] > temp; j -= gap){
+                    arr[j] = arr[j-gap];
+                }
+                arr[j] = temp;
+            }
+        }
+    }
      // insertion sort
     public void insertionSort(int [] arr){
         int n = arr.length;
