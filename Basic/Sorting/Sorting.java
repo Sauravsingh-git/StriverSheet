@@ -15,6 +15,7 @@ class Sorting{
     // add the sorted buckets to the array
     public void bucketSort( float [] arr){
         int len = arr.length;
+        @SuppressWarnings("unchecked")
         ArrayList<Float> [] bucket = new ArrayList [len];
         for ( int i = 0; i < len; i++ ){
             bucket[i] = new ArrayList<Float>();
