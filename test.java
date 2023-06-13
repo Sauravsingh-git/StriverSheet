@@ -1,31 +1,48 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 public class test {
-    public static String countSort(String word)
-    {
-        char [] arr = word.toCharArray();
+    static List<Integer> nextPermutation(int N, int arr[]){
+        List<Integer> nextPermutation = new ArrayList<>();
         int len = arr.length;
-        int [] map = new int[26];
-        for ( char ch : arr )
-            map[ch-'a']++;
-             
-        
-        // getting the actual posititons of the characters
-        for ( int i = 1; i < 26; i++ ){
-            map[i] += map[i-1];
+        int i = len -2;
+        while ( i >= 0 && arr[i] > arr[i+1]){
+            i--; 
         }
 
-        System.out.println(Arrays.toString(map));
-        // populating the new array
-        char [] outputarr = new char [len];
-        
-        for ( int i = len-1; i >= 0; i--){
-            outputarr[map[arr[i]-'a']-1] = arr[i];
+        if ( i == -1 ){
+            for( int k = len-1; k >=0; k-- ){
+                nextPermutation.add(arr[k]);
+            }
+            return nextPermutation;
         }
-        return new String(outputarr);
+        
+        int j = len-1;
+        while ( j > i ){
+            if( arr[j] > arr[i])
+                break;
+            j--;
+            System.out.println(" j : " + j);
+        }
+        
+        swap( arr, i, j);
+        for ( int k = 0; k <= i; k++){
+            nextPermutation.add(arr[k]);
+        }
+        for( int k = len-1; k > i; k-- )
+            nextPermutation.add(arr[k]);
+        swap(arr, i, j);
+        return nextPermutation;
     }
-
+    
+    public static void swap( int [] arr, int i, int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
     public static void main(String [] args){
-        String str = countSort("edsab");
-        System.out.println(str);
+        int [] arr = { 1, 2, 3, 6, 5, 4};
+        List<Integer> list = nextPermutation(3, arr);
+        System.out.println(list.toString());
     }
 }
