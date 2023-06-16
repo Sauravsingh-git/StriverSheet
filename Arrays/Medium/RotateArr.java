@@ -12,8 +12,6 @@ public class RotateArr {
     // time complexity : O(n*m)
     // Space complexity : O(1)
         public void rotate(int[][] matrix) {
-        int start = 0, end = matrix.length - 1;
-
         for(int i=0; i<matrix.length; i++){
             for(int j=i; j<matrix[0].length; j++){
                 int temp = matrix[i][j];
