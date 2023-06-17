@@ -1,27 +1,20 @@
 package Arrays.Hard;
-import java.util.*;
-class CountingInversion{
-    public static void main(String [] args ){
-        int [] arr = { 2, 4, 1, 3, 5};
-        CountingInversion obj = new CountingInversion();
-        int x = obj.merge(arr, 0, 4);
-        String str = Arrays.toString(arr);
-        System.out.println(x);
-    }
 
-    public int merge( int [] arr, int low, int high ){
+class CountingInversion{
+
+    public int mergeSort( int [] arr, int low, int high ){
         int count = 0;
         if ( low < high){
             int mid = ( low+high )/2;
-            count += merge(arr, low, mid);
-            count += merge( arr, mid+1, high);
-            count += mergeSort( arr, low, mid, high);
+            count += mergeSort(arr, low, mid);
+            count += mergeSort( arr, mid+1, high);
+            count += merge( arr, low, mid, high);
 
         }
         return count;
     }
 
-    public int mergeSort( int [] arr, int low, int mid, int high){
+    public int merge( int [] arr, int low, int mid, int high){
         int len = high - low + 1;
         int idx = 0;
         int idx1 = low;

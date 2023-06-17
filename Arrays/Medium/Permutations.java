@@ -71,7 +71,5 @@ public class Permutations {
             swap(nums, i, idx);
         }
     }
-    public static void main(String [] arggs){
-        Set<int [] > set = new HashSet<>();        
-    }
+   
 }
