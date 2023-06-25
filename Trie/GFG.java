@@ -43,11 +43,7 @@ public static void main(String[] args)
 					+ k + " distinct characters : "
 					+ exact_k_chars(s1, k));
 
-	String s2 = "aabab";
-	k = 2;
-	System.out.println("Total substrings with exactly "
-					+ k + " distinct characters : "
-					+ exact_k_chars(s2, k));
+
 }
 }
 
