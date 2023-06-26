@@ -2,8 +2,7 @@ package BinarySearch.BinarySearch2D;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-import java.util.Arrays;
+
 
 public class MatrixMedian {
     // brute force approach
@@ -55,16 +54,7 @@ public class MatrixMedian {
         return low;
     }    
 
-    public static void main(String [] args){
-        MatrixMedian obj = new MatrixMedian();
-        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
-        list.add(new ArrayList<>());
-        list.get(0).add(1);
-        list.get(0).add(5);
-        list.get(0).add(6);
-        int i= obj.findMedian(list);
-        System.out.println(i);
-    }
+    
 
     
     public int numberIsGreaterThanEqualTo( ArrayList<Integer> row, int target){
