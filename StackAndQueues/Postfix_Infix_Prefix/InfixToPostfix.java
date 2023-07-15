@@ -3,17 +3,10 @@ package StackAndQueues.Postfix_Infix_Prefix;
 import java.util.Stack;
 
 public class InfixToPostfix {
-    public static void main(String [] args){
-        String result = infixToPostfix("(a+b+c)/d");
-        System.out.println(result);
-    }
-
     public static String infixToPostfix(String exp) {
     StringBuilder sb = new StringBuilder();
 	Stack<Character> stack = new Stack<>();
 	for ( char ch : exp.toCharArray() ){
-        System.out.println("curr string : " + sb.toString());
-        System.out.println("curr stack : " + stack);
 		if ( isOpeningBracket(ch )){
 			stack.push(ch);
 		}else if ( isClosingBracket(ch)){
