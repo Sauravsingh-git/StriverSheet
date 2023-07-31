@@ -10,7 +10,7 @@ public class CombinationSum {
         combinationSum(candidates, 0, target, new ArrayList<>(), combinations);
         return combinations;
     }
-    
+
     private void combinationSum(int [] candidates, int idx, int target, List<Integer> currList, List<List<Integer>> combinations){
           if ( target == 0 ) {
               combinations.add(new ArrayList<>(currList));
@@ -24,5 +24,21 @@ public class CombinationSum {
                   currList.remove(currList.size()-1);
               }
           }
+    }
+
+    // approach 2
+    private void combinationSum_approach2( int [] candidates, int idx,  int target, List<Integer> currList, List<List<Integer>> combinations){
+        if ( target == 0 ){
+            combinations.add(new ArrayList<>(currList));
+            return;
+        }
+
+        if ( idx == candidates.length || target < 0 ) return;
+        
+        combinationSum(candidates, idx+1, target, currList, combinations);
+
+        currList.add(candidates[idx]);
+        combinationSum(candidates, idx, target - candidates[idx], currList, combinations);
+        currList.remove(currList.size()-1);
     }
 }
