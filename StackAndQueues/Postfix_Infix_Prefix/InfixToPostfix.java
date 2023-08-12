@@ -3,6 +3,10 @@ package StackAndQueues.Postfix_Infix_Prefix;
 import java.util.Stack;
 
 public class InfixToPostfix {
+    public static void main(String [] args){
+        String result = infixToPostfix("2+3*2");
+        System.out.println(result);
+    }
     public static String infixToPostfix(String exp) {
     StringBuilder sb = new StringBuilder();
 	Stack<Character> stack = new Stack<>();

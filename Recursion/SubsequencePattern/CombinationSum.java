@@ -27,7 +27,7 @@ public class CombinationSum {
     }
 
     // approach 2
-    private void combinationSum_approach2( int [] candidates, int idx,  int target, List<Integer> currList, List<List<Integer>> combinations){
+    public void combinationSum_approach2( int [] candidates, int idx,  int target, List<Integer> currList, List<List<Integer>> combinations){
         if ( target == 0 ){
             combinations.add(new ArrayList<>(currList));
             return;
